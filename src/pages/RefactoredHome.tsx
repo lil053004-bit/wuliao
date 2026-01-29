@@ -717,12 +717,6 @@ export default function RefactoredHome() {
                 <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">
                   銘柄情報分析
                 </h1>
-                <p className="text-xs text-text-muted leading-relaxed mb-1">
-                  公開情報や市場データをもとに銘柄情報を整理した参考レポートをご提供します。投資判断に必要な基本情報から、最新の市場動向、企業の財務状況、業界内での位置づけなどを分かりやすくまとめています。
-                </p>
-                <p className="text-xs text-text-muted leading-relaxed mb-1">
-                  ※提供される全ての情報は参考情報であり、投資の最終判断は必ずご自身の責任で行ってください。現在無料で提供中ですが、将来的に有料化する可能性があります。
-                </p>
               </div>
             </div>
 
