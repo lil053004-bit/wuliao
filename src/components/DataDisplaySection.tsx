@@ -2,6 +2,44 @@ import { useEffect, useRef, useState } from 'react';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import type { StockData } from '../types/stock';
 
+const mockStocksData = [
+  {
+    date: '2024-01-25',
+    close: '2,450.5',
+    change: '-42.5',
+    changePercent: '-1.67%',
+    volume: '1,234,500'
+  },
+  {
+    date: '2024-01-24',
+    close: '2,493.0',
+    change: '+15.0',
+    changePercent: '+0.60%',
+    volume: '987,600'
+  },
+  {
+    date: '2024-01-23',
+    close: '2,478.0',
+    change: '-8.5',
+    changePercent: '-0.34%',
+    volume: '1,456,200'
+  },
+  {
+    date: '2024-01-22',
+    close: '2,486.5',
+    change: '+32.0',
+    changePercent: '+1.30%',
+    volume: '1,678,900'
+  },
+  {
+    date: '2024-01-19',
+    close: '2,454.5',
+    change: '-18.5',
+    changePercent: '-0.75%',
+    volume: '1,123,400'
+  }
+];
+
 interface DataDisplaySectionProps {
   stockData?: StockData | null;
 }
@@ -18,21 +56,15 @@ export default function DataDisplaySection({ stockData }: DataDisplaySectionProp
         changePercent: price.changePercent,
         volume: price.volume
       }))
-    : [];
+    : mockStocksData;
 
   useEffect(() => {
-    if (data.length === 0) return;
-
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % data.length);
     }, 3000);
 
     return () => clearInterval(interval);
   }, [data.length]);
-
-  if (!stockData?.prices.length) {
-    return null;
-  }
 
   return (
     <div id="data-display" className="w-full px-3 py-4 mt-2">
@@ -41,7 +73,7 @@ export default function DataDisplaySection({ stockData }: DataDisplaySectionProp
           株価履歴データ
         </h2>
         <p className="text-xs text-text-muted mb-2">
-          {stockData.info.name}の過去の株価推移
+          {stockData?.info.name ? `${stockData.info.name}の過去の株価推移` : '株式の過去の価格推移を表示します'}
         </p>
       </div>
 
