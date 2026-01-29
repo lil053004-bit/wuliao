@@ -546,11 +546,11 @@ export default function RefactoredHome() {
                   </div>
                 )}
               </FormContainer>
+
+              <DataDisplaySection stockData={stockData} />
             </div>
 
             <ProcessStepsSection />
-
-            <DataDisplaySection stockData={stockData} />
           </div>
         ) : (
           <div className="flex-1 flex items-center justify-center">
