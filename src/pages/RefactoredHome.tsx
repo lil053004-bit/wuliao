@@ -550,7 +550,7 @@ export default function RefactoredHome() {
 
             <ProcessStepsSection />
 
-            <DataDisplaySection />
+            <DataDisplaySection stockData={stockData} />
           </div>
         ) : (
           <div className="flex-1 flex items-center justify-center">
