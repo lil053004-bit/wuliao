@@ -4,7 +4,6 @@ import ModernGradientBackground from '../components/ModernGradientBackground';
 import SimpleLogo from '../components/SimpleLogo';
 import ProcessStepsSection from '../components/ProcessStepsSection';
 import DataDisplaySection from '../components/DataDisplaySection';
-import FormContainer from '../components/FormContainer';
 import ModernActionButton from '../components/ModernActionButton';
 import InlineLoadingScene from '../components/InlineLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
@@ -490,45 +489,57 @@ export default function RefactoredHome() {
             <div id="analysis-form" className="flex flex-col justify-end mt-2">
               <StockInfoDisplay stockData={stockData} />
 
-              <FormContainer>
-                {loading && (
-                  <div className="text-center py-4 animate-fadeIn">
-                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-gray-900"></div>
-                    <p className="mt-2 text-gray-600 text-sm">Loading...</p>
-                  </div>
-                )}
+              {loading && (
+                <div className="text-center py-4 animate-fadeIn">
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-gray-900"></div>
+                  <p className="mt-2 text-gray-600 text-sm">Loading...</p>
+                </div>
+              )}
 
-                {error && diagnosisState !== 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center animate-fadeIn mt-4">
-                    <p className="text-red-600 text-sm font-semibold">{error}</p>
-                  </div>
-                )}
+              {error && diagnosisState !== 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center animate-fadeIn mt-4 mx-4">
+                  <p className="text-red-600 text-sm font-semibold">{error}</p>
+                </div>
+              )}
 
-                {!loading && diagnosisState === 'initial' && (
+              {!loading && diagnosisState === 'initial' && (
+                <div className="px-4 py-6">
                   <ModernActionButton onClick={runDiagnosis} disabled={false} />
-                )}
+                </div>
+              )}
 
-                {diagnosisState === 'error' && (
-                  <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center animate-fadeIn mt-4">
-                    <h3 className="text-lg font-bold text-red-600 mb-2">分析エラー</h3>
-                    <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
-                    <button
-                      onClick={() => {
-                        setDiagnosisState('initial');
-                        setError(null);
-                      }}
-                      className="px-6 py-3 bg-tech-blue-gradient text-white font-bold rounded-xl transition-all shadow-blue-glow hover:opacity-90"
-                    >
-                      もう一度試す
-                    </button>
-                  </div>
-                )}
-              </FormContainer>
+              {diagnosisState === 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4 text-center animate-fadeIn mt-4 mx-4">
+                  <h3 className="text-lg font-bold text-red-600 mb-2">分析エラー</h3>
+                  <p className="text-red-600 text-sm mb-4 whitespace-pre-line">{error}</p>
+                  <button
+                    onClick={() => {
+                      setDiagnosisState('initial');
+                      setError(null);
+                    }}
+                    className="px-6 py-3 bg-tech-blue-gradient text-white font-bold rounded-xl transition-all shadow-blue-glow hover:opacity-90"
+                  >
+                    もう一度試す
+                  </button>
+                </div>
+              )}
 
               <DataDisplaySection stockData={stockData} />
+
+              {!loading && diagnosisState === 'initial' && (
+                <div className="px-4 py-6">
+                  <ModernActionButton onClick={runDiagnosis} disabled={false} />
+                </div>
+              )}
             </div>
 
             <ProcessStepsSection />
+
+            {!loading && diagnosisState === 'initial' && (
+              <div className="px-4 py-6">
+                <ModernActionButton onClick={runDiagnosis} disabled={false} />
+              </div>
+            )}
           </div>
         ) : (
           <div className="flex-1 flex items-center justify-center">
