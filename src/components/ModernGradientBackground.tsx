@@ -1,19 +1,30 @@
+import FujiMountainImage from './FujiMountainImage';
+
 export default function ModernGradientBackground() {
   return (
     <div className="fixed inset-0 w-full h-full z-0 overflow-hidden">
       <div className="absolute inset-0 w-full h-full bg-fuji-dawn" />
 
       <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl h-96 opacity-20">
-        <svg viewBox="0 0 800 400" className="w-full h-full">
-          <path d="M 0 400 L 200 300 L 400 150 L 600 300 L 800 400 Z" fill="#1A2B4A" opacity="0.3" />
-        </svg>
+        <FujiMountainImage
+          variant="background-far"
+          className="w-full h-full"
+          style={{
+            filter: 'brightness(0.5) saturate(0.8)',
+            mixBlendMode: 'multiply',
+          }}
+        />
       </div>
 
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl h-80">
-        <svg viewBox="0 0 600 350" className="w-full h-full">
-          <path d="M 0 350 L 150 250 L 300 80 L 450 250 L 600 350 Z" fill="#0F1E3A" opacity="0.6" />
-          <path d="M 250 150 L 300 80 L 350 150 Z" fill="#FFFAFA" opacity="0.9" />
-        </svg>
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl h-80 opacity-60">
+        <FujiMountainImage
+          variant="background-near"
+          className="w-full h-full"
+          style={{
+            filter: 'brightness(0.4) contrast(1.2) saturate(0.9)',
+            mixBlendMode: 'multiply',
+          }}
+        />
       </div>
 
       <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 w-48 h-48 animate-sunrise">

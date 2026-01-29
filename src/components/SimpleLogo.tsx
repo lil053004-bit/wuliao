@@ -1,3 +1,5 @@
+import FujiMountainImage from './FujiMountainImage';
+
 export default function SimpleLogo() {
   return (
     <>
@@ -26,10 +28,14 @@ export default function SimpleLogo() {
         <div className="relative w-56 h-56 flex items-center justify-center">
 
           <div className="absolute inset-0 flex items-center justify-center">
-            <svg viewBox="0 0 200 200" className="w-full h-full">
-              <path d="M 40 160 L 100 60 L 160 160 Z" fill="none" stroke="#E60012" strokeWidth="3" opacity="0.6" />
-              <path d="M 80 120 L 100 60 L 120 120 Z" fill="#FFFAFA" opacity="0.8" />
-            </svg>
+            <FujiMountainImage
+              variant="logo"
+              className="w-full h-full opacity-80"
+              style={{
+                filter: 'drop-shadow(0 0 20px rgba(230, 0, 18, 0.3))',
+                mixBlendMode: 'multiply',
+              }}
+            />
           </div>
 
           <div className="absolute inset-0 flex items-center justify-center animate-divine-rays">
