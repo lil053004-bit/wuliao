@@ -5,24 +5,22 @@ export default function ModernGradientBackground() {
     <div className="fixed inset-0 w-full h-full z-0 overflow-hidden">
       <div className="absolute inset-0 w-full h-full bg-fuji-dawn" />
 
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl h-96 opacity-20">
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl h-96 opacity-30">
         <FujiMountainImage
           variant="background-far"
           className="w-full h-full"
           style={{
-            filter: 'brightness(0.5) saturate(0.8)',
-            mixBlendMode: 'multiply',
+            filter: 'drop-shadow(0 -10px 30px rgba(26, 43, 74, 0.4))',
           }}
         />
       </div>
 
-      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl h-80 opacity-60">
+      <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-3xl h-80 opacity-70">
         <FujiMountainImage
           variant="background-near"
           className="w-full h-full"
           style={{
-            filter: 'brightness(0.4) contrast(1.2) saturate(0.9)',
-            mixBlendMode: 'multiply',
+            filter: 'drop-shadow(0 -15px 40px rgba(15, 30, 58, 0.6))',
           }}
         />
       </div>

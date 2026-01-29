@@ -30,10 +30,9 @@ export default function SimpleLogo() {
           <div className="absolute inset-0 flex items-center justify-center">
             <FujiMountainImage
               variant="logo"
-              className="w-full h-full opacity-80"
+              className="w-full h-full"
               style={{
-                filter: 'drop-shadow(0 0 20px rgba(230, 0, 18, 0.3))',
-                mixBlendMode: 'multiply',
+                filter: 'drop-shadow(0 4px 12px rgba(230, 0, 18, 0.4)) drop-shadow(0 0 30px rgba(255, 250, 250, 0.2))',
               }}
             />
           </div>
