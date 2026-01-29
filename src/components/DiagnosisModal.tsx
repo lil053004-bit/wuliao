@@ -67,10 +67,14 @@ export default function DiagnosisModal({
   return (
     <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black bg-opacity-75" style={{ touchAction: 'none' }}>
       <div className="relative w-full max-w-3xl max-h-[95vh]">
-        <div className="relative bg-white rounded-lg shadow-2xl overflow-hidden border-2 border-tech-blue" style={{ touchAction: 'auto' }}>
-          <div className="sticky top-0 flex items-center justify-between px-6 py-4" style={{ background: 'linear-gradient(135deg, #2563EB 0%, #1E40AF 100%)' }}>
-          <div className="flex-1 text-center">
-            <h2 className="text-sm font-bold text-white">
+        <div className="relative bg-white rounded-lg shadow-fuji-divine overflow-hidden border-2 border-fuji-red" style={{ touchAction: 'auto' }}>
+          <div className="sticky top-0 flex items-center justify-between px-6 py-4 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #E60012 0%, #FF6B35 50%, #FFD93D 100%)' }}>
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-fuji-snow via-fuji-gold to-fuji-snow opacity-60" />
+          <svg className="absolute bottom-0 left-0 w-full h-8 opacity-30" viewBox="0 0 1200 40" preserveAspectRatio="none">
+            <path d="M 0 40 Q 150 20 300 40 Q 450 20 600 40 Q 750 20 900 40 Q 1050 20 1200 40 L 1200 40 L 0 40 Z" fill="#FFFAFA" />
+          </svg>
+          <div className="flex-1 text-center relative z-10">
+            <h2 className="text-sm font-bold text-white drop-shadow-lg">
               銘柄情報レポート（参考情報）
             </h2>
             {isConnecting && (
@@ -98,11 +102,11 @@ export default function DiagnosisModal({
         <div ref={contentRef} className="overflow-y-auto max-h-[calc(95vh-150px)] px-2 py-2">
           <div className="mb-6">
             {currentPrice ? (
-              <div className="mb-4 p-2 rounded-xl bg-gradient-to-br from-blue-50 to-cyan-50 border border-blue-200">
+              <div className="mb-4 p-2 rounded-xl bg-gradient-to-br from-fuji-snow to-pink-50 border-2 border-fuji-dawn-pink">
                 <p className="text-base text-gray-800 leading-relaxed mb-3">
-                  ご入力いただいた<strong className="text-blue-700">{stockName}（{stockCode}）</strong>について、市場データと独自ロジックをもとに銘柄情報を整理しました。
+                  ご入力いただいた<strong className="text-fuji-red">{stockName}（{stockCode}）</strong>について、市場データと独自ロジックをもとに銘柄情報を整理しました。
                 </p>
-                <div className="bg-white rounded-lg p-2 mb-3 border border-blue-100">
+                <div className="bg-white rounded-lg p-2 mb-3 border border-fuji-dawn-pink">
                   <div className="flex items-baseline gap-2 mb-1">
                     <span className="text-xs text-gray-600">現在株価：</span>
                     <span className="text-lg font-bold text-gray-900">{currentPrice} 円</span>

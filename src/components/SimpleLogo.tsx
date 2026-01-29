@@ -3,47 +3,82 @@ export default function SimpleLogo() {
     <>
       <style>
         {`
-          @keyframes spin-slow {
+          @keyframes divine-rays {
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.6; }
+            50% { transform: rotate(45deg) scale(1.1); opacity: 0.9; }
+          }
+
+          @keyframes cloud-rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
           }
 
-          @keyframes spin-reverse {
-            from { transform: rotate(360deg); }
-            to { transform: rotate(0deg); }
+          .animate-divine-rays {
+            animation: divine-rays 4s ease-in-out infinite;
           }
 
-          .animate-spin-slow {
-            animation: spin-slow 6s linear infinite;
-          }
-
-          .animate-spin-reverse {
-            animation: spin-reverse 4s linear infinite;
+          .animate-cloud-rotate {
+            animation: cloud-rotate 20s linear infinite;
           }
         `}
       </style>
       <div className="flex justify-center items-center mb-2">
-        <div className="relative w-48 h-48 flex items-center justify-center">
+        <div className="relative w-56 h-56 flex items-center justify-center">
 
-          <div className="absolute inset-0 flex items-center justify-center animate-spin-slow">
-            <div className="w-40 h-40 rounded-full border-4 border-blue-500/30"></div>
-            <div className="absolute top-0 w-1.5 h-10 bg-gradient-to-b from-blue-400 via-blue-500 to-transparent rounded-full"></div>
-            <div className="absolute bottom-0 w-1.5 h-10 bg-gradient-to-t from-blue-300 via-blue-400 to-transparent rounded-full"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <svg viewBox="0 0 200 200" className="w-full h-full">
+              <path d="M 40 160 L 100 60 L 160 160 Z" fill="none" stroke="#E60012" strokeWidth="3" opacity="0.6" />
+              <path d="M 80 120 L 100 60 L 120 120 Z" fill="#FFFAFA" opacity="0.8" />
+            </svg>
           </div>
 
-          <div className="absolute inset-0 flex items-center justify-center animate-spin-reverse">
-            <div className="w-32 h-32 rounded-full border-4 border-cyan-400/40"></div>
-            <div className="absolute left-0 w-8 h-1.5 bg-gradient-to-r from-cyan-400 via-cyan-300 to-transparent rounded-full"></div>
-            <div className="absolute right-0 w-8 h-1.5 bg-gradient-to-l from-blue-400 via-cyan-400 to-transparent rounded-full"></div>
+          <div className="absolute inset-0 flex items-center justify-center animate-divine-rays">
+            {[...Array(12)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-24 bg-gradient-to-t from-fuji-gold via-fuji-peach to-transparent origin-center"
+                style={{
+                  transform: `rotate(${i * 30}deg) translateY(-50px)`,
+                }}
+              />
+            ))}
           </div>
 
-          <div className="relative w-24 h-24 rounded-2xl flex items-center justify-center">
+          <div className="absolute inset-0 flex items-center justify-center animate-cloud-rotate">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-12 h-6 bg-white rounded-full opacity-30"
+                style={{
+                  transform: `rotate(${i * 60}deg) translateY(-80px)`,
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="relative w-32 h-32 rounded-full bg-fuji-sunrise shadow-fuji-sunrise-glow flex items-center justify-center">
             <img
               src="/assets/logo-pqvxwnoy.png"
               alt="AI Stock Logo"
-              className="w-full h-full object-contain drop-shadow-2xl"
+              className="w-20 h-20 object-contain drop-shadow-2xl relative z-10"
             />
+
+            <div className="absolute inset-0 rounded-full overflow-hidden">
+              {[...Array(4)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute w-2 h-2 bg-fuji-snow rounded-full animate-snow-sparkle"
+                  style={{
+                    top: `${20 + i * 20}%`,
+                    left: `${20 + i * 15}%`,
+                    animationDelay: `${i * 0.5}s`,
+                  }}
+                />
+              ))}
+            </div>
           </div>
+
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-1 h-32 bg-gradient-to-b from-fuji-gold via-fuji-peach to-transparent opacity-40" />
         </div>
       </div>
     </>

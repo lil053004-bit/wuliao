@@ -20,7 +20,7 @@ export default function ProcessStepsSection() {
   return (
     <div id="process" className="w-full px-3 py-6">
       <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-white mb-2">
+        <h2 className="text-2xl font-bold bg-gradient-to-r from-fuji-red via-fuji-peach to-fuji-gold bg-clip-text text-transparent mb-2">
           データ認証・詳細化の仕組み
         </h2>
       </div>
@@ -29,21 +29,25 @@ export default function ProcessStepsSection() {
         {steps.map((step, index) => (
           <div
             key={step.number}
-            className="bg-dark-secondary/60 backdrop-blur-sm border border-border-blue/20 rounded-xl p-4"
+            className="relative bg-gradient-to-br from-fuji-snow/80 to-pink-50/70 backdrop-blur-sm border-2 border-fuji-dawn-pink rounded-xl p-4 overflow-hidden group hover:shadow-fuji-gold-glow transition-all"
           >
-            <div className="flex gap-3">
+            <svg className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none" viewBox="0 0 200 100">
+              <path d="M 50 80 L 100 30 L 150 80 Z" fill="#E60012" />
+            </svg>
+
+            <div className="flex gap-3 relative z-10">
               <div className="flex-shrink-0">
-                <div className="w-10 h-10 bg-tech-blue/30 rounded-lg flex items-center justify-center">
-                  <span className="text-sm font-bold text-tech-blue-light">{step.number}</span>
+                <div className="w-10 h-10 bg-fuji-sunrise rounded-full flex items-center justify-center shadow-fuji-red-glow">
+                  <span className="text-sm font-bold text-white">{step.number}</span>
                 </div>
               </div>
 
               <div className="flex-1">
-                <h3 className="text-base font-bold text-white mb-2">
+                <h3 className="text-base font-bold text-fuji-red mb-2">
                   {step.title}
                 </h3>
 
-                <p className="text-xs text-text-muted leading-relaxed">
+                <p className="text-xs text-gray-700 leading-relaxed">
                   {step.description}
                 </p>
               </div>
