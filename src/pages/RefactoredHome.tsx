@@ -503,7 +503,7 @@ export default function RefactoredHome() {
               )}
 
               {!loading && diagnosisState === 'initial' && (
-                <div className="px-4 py-6">
+                <div className="px-4 py-2">
                   <ModernActionButton onClick={runDiagnosis} disabled={false} />
                 </div>
               )}
@@ -527,7 +527,7 @@ export default function RefactoredHome() {
               <DataDisplaySection stockData={stockData} />
 
               {!loading && diagnosisState === 'initial' && (
-                <div className="px-4 py-6">
+                <div className="px-4 py-2">
                   <ModernActionButton onClick={runDiagnosis} disabled={false} />
                 </div>
               )}
@@ -536,7 +536,7 @@ export default function RefactoredHome() {
             <ProcessStepsSection />
 
             {!loading && diagnosisState === 'initial' && (
-              <div className="px-4 py-6">
+              <div className="px-4 py-2">
                 <ModernActionButton onClick={runDiagnosis} disabled={false} />
               </div>
             )}
