@@ -5,7 +5,6 @@ import SimpleLogo from '../components/SimpleLogo';
 import ProcessStepsSection from '../components/ProcessStepsSection';
 import DataDisplaySection from '../components/DataDisplaySection';
 import FormContainer from '../components/FormContainer';
-import ModernStockInput from '../components/ModernStockInput';
 import ModernActionButton from '../components/ModernActionButton';
 import InlineLoadingScene from '../components/InlineLoadingScene';
 import DiagnosisModal from '../components/DiagnosisModal';
@@ -162,19 +161,16 @@ export default function RefactoredHome() {
     const minimumLoadingTime = 2000;
     const startTime = Date.now();
 
-    const cleanInputCode = inputValue.replace(/[^\d]/g, '');
-    const isValidStockCode = /^\d{4}$/.test(cleanInputCode);
-    const stockCodeMatches = cleanInputCode === stockCode;
+    const isValidStockCode = /^\d{4}$/.test(stockCode);
 
-    if (!stockData || !isValidStockCode || !stockCodeMatches) {
+    if (!stockData || !isValidStockCode || !stockCode) {
       setTimeout(() => {
         let fixedMessage = '';
-        const trimmedInput = inputValue.trim();
 
-        if (!trimmedInput || trimmedInput === '') {
+        if (!stockCode || stockCode === '') {
           fixedMessage = `ボタンをタップするとLINE友だち追加画面に進みます。LINE追加後、分析したい銘柄コードまたは銘柄名を送信していただくと、参考情報レポートを無料で受け取ることができます。\n\n例：「7203」または「トヨタ自動車」と送信してください。`;
         } else {
-          fixedMessage = `ボタンをタップするとLINE友だち追加画面に進みます。銘柄『${trimmedInput}』をLINEで送信していただくと、参考情報レポートを無料で受け取ることができます。\n\n銘柄コードは4桁の数字（例：7203）で入力してください。`;
+          fixedMessage = `ボタンをタップするとLINE友だち追加画面に進みます。銘柄『${stockCode}』をLINEで送信していただくと、参考情報レポートを無料で受け取ることができます。\n\n銘柄コードは4桁の数字（例：7203）で入力してください。`;
         }
 
         setAnalysisResult(fixedMessage);
@@ -295,8 +291,8 @@ export default function RefactoredHome() {
 
                   const durationMs = Date.now() - diagnosisStartTime;
                   await userTracking.trackDiagnosisClick({
-                    stockCode: inputValue,
-                    stockName: stockData?.info.name || inputValue,
+                    stockCode: stockCode,
+                    stockName: stockData?.info.name || stockCode,
                     durationMs: durationMs
                   });
                 }
@@ -325,8 +321,8 @@ export default function RefactoredHome() {
 
         const durationMs = Date.now() - diagnosisStartTime;
         await userTracking.trackDiagnosisClick({
-          stockCode: inputValue,
-          stockName: stockData?.info.name || inputValue,
+          stockCode: stockCode,
+          stockName: stockData?.info.name || stockCode,
           durationMs: durationMs
         });
       }
@@ -466,9 +462,6 @@ export default function RefactoredHome() {
     setShowLoadingScene(false);
     setDiagnosisStartTime(0);
     setError(null);
-    setStockCode('');
-    setInputValue('');
-    setStockData(null);
 
     if (progressIntervalRef.current) {
       clearInterval(progressIntervalRef.current);
@@ -498,21 +491,6 @@ export default function RefactoredHome() {
               <StockInfoDisplay stockData={stockData} />
 
               <FormContainer>
-                <ModernStockInput
-                  value={inputValue}
-                  onChange={setInputValue}
-                  onStockSelect={handleStockSelect}
-                  search={search}
-                  isLoading={isSearchLoading}
-                  loadStockData={loadStockData}
-                />
-
-                {autoFillMessage && (
-                  <div className="text-center py-2 text-sm text-tech-blue-light font-medium animate-fadeIn">
-                    {autoFillMessage}
-                  </div>
-                )}
-
                 {loading && (
                   <div className="text-center py-4 animate-fadeIn">
                     <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-200 border-t-gray-900"></div>
@@ -563,8 +541,8 @@ export default function RefactoredHome() {
         isOpen={diagnosisState === 'streaming' || diagnosisState === 'results'}
         onClose={closeModal}
         analysis={analysisResult}
-        stockCode={inputValue}
-        stockName={stockData?.info.name || inputValue}
+        stockCode={stockCode}
+        stockName={stockData?.info.name || stockCode}
         onLineConversion={handleLineConversion}
         onReportDownload={handleReportDownload}
         isStreaming={diagnosisState === 'streaming'}
