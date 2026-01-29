@@ -57,12 +57,6 @@ export default function SimpleLogo() {
           </div>
 
           <div className="relative w-32 h-32 rounded-full bg-fuji-sunrise shadow-fuji-sunrise-glow flex items-center justify-center">
-            <img
-              src="/assets/logo-pqvxwnoy.png"
-              alt="AI Stock Logo"
-              className="w-20 h-20 object-contain drop-shadow-2xl relative z-10"
-            />
-
             <div className="absolute inset-0 rounded-full overflow-hidden">
               {[...Array(4)].map((_, i) => (
                 <div

@@ -23,7 +23,7 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
           }
         `}
       </style>
-      <div className="relative animate-fadeIn mt-6" style={{ animationDelay: '0.3s' }}>
+      <div className="relative animate-fadeIn" style={{ animationDelay: '0.3s' }}>
         <div className="absolute -inset-1 bg-fuji-sunrise opacity-30 blur-lg rounded-3xl" />
 
         <button
@@ -51,7 +51,7 @@ export default function ModernActionButton({ onClick, disabled = false }: Modern
           <span className="text-lg relative z-10 drop-shadow-md">データ更新を確認</span>
         </button>
       </div>
-      <div className="mt-4 text-center">
+      <div className="text-center">
         <p className="text-xs text-gray-600 leading-relaxed">
           本サービスは「情報提供サービス」であり、投資助言ではありません。
         </p>
