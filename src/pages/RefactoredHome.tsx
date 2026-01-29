@@ -711,10 +711,10 @@ export default function RefactoredHome() {
 
         {!showLoadingScene ? (
           <div className="flex-1 flex flex-col">
-            <div id="overview" className="flex flex-col items-center justify-center px-3 py-2">
+            <div id="overview" className="relative flex flex-col items-center justify-center px-3 py-2 -mt-8">
               <SimpleLogo />
-              <div className="text-center px-4">
-                <h1 className="text-3xl font-bold text-white mb-2 drop-shadow-lg">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center px-4 pointer-events-none">
+                <h1 className="text-3xl font-bold text-white drop-shadow-2xl">
                   銘柄情報分析
                 </h1>
               </div>
