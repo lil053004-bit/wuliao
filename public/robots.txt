@@ -1,0 +1,24 @@
+# AI株式診断サービス
+
+User-agent: *
+Allow: /
+Disallow: /adsadmin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://japanaistock.jp/sitemap.xml
+
+# Google bots
+User-agent: Googlebot
+Allow: /
+Disallow: /adsadmin/
+Disallow: /api/
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Bing bot
+User-agent: Bingbot
+Allow: /
+Disallow: /adsadmin/
+Disallow: /api/

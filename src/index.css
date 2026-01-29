@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'HYYaKuHeiW';
+    src: local('Noto Sans JP'), local('Hiragino Sans');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Adobe Heiti Std';
+    src: local('Hiragino Sans'), local('Yu Gothic');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  html {
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+  }
+
+  :root {
+    /* CSS Custom Properties for Form Inputs */
+    /* Standardized placeholder colors for better readability and WCAG compliance */
+    --placeholder-color-dark: #475569; /* slate-600 - darker gray for better contrast */
+    --placeholder-color-light: #94a3b8; /* slate-400 - lighter gray for dark backgrounds */
+  }
+
+  body {
+    @apply bg-dark-primary text-text-light min-h-screen;
+    overflow-x: hidden;
+    font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #2563EB #1A2B4A;
+  }
+
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #1A2B4A;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #2563EB;
+    border-radius: 4px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #3B82F6;
+  }
+
+  body[data-modal-open] header,
+  body[data-modal-open] > div > header {
+    display: none !important;
+  }
+
+  body[data-modal-open] footer,
+  body[data-modal-open] > div > footer {
+    display: none !important;
+  }
+}
+
+@layer utilities {
+  @keyframes shimmer {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.8), 0 0 60px rgba(37, 99, 235, 0.4);
+    }
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-33.33%);
+    }
+  }
+
+  @keyframes robot-float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes book-read {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-2px) rotate(-1deg);
+    }
+    75% {
+      transform: translateY(-2px) rotate(1deg);
+    }
+  }
+
+  @keyframes magnifier-scan {
+    0%, 30% {
+      transform: translate(0, 0);
+      opacity: 0;
+    }
+    35% {
+      opacity: 1;
+    }
+    70% {
+      transform: translate(80px, 0);
+      opacity: 1;
+    }
+    75%, 100% {
+      transform: translate(80px, 0);
+      opacity: 0;
+    }
+  }
+
+  .animate-scroll-left {
+    animation: scroll-left 30s linear infinite;
+  }
+
+  .animate-robot-float {
+    animation: robot-float 3s ease-in-out infinite;
+  }
+
+  .animate-book-read {
+    animation: book-read 4s ease-in-out infinite;
+  }
+
+  .animate-magnifier-scan {
+    animation: magnifier-scan 8s ease-in-out infinite;
+  }
+
+  @keyframes astronaut-float {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-8px) rotate(-2deg);
+    }
+    75% {
+      transform: translateY(-5px) rotate(2deg);
+    }
+  }
+
+  @keyframes rocket-lift {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-6px) rotate(1deg);
+    }
+    50% {
+      transform: translateY(-12px) rotate(-1deg);
+    }
+    75% {
+      transform: translateY(-6px) rotate(1deg);
+    }
+  }
+
+  .animate-astronaut-float {
+    animation: astronaut-float 4s ease-in-out infinite;
+  }
+
+  .animate-rocket-lift {
+    animation: rocket-lift 3s ease-in-out infinite;
+  }
+}
